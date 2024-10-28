@@ -11,17 +11,6 @@ MULTICALL3_ABI = json.loads('[{"inputs":[{"components":[{"internalType":"address
 UNIV2_POOL_ABI = '[{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"sender","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount0","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount1","type":"uint256"},{"indexed":true,"internalType":"address","name":"to","type":"address"}],"name":"Burn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"sender","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount0","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount1","type":"uint256"}],"name":"Mint","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"sender","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount0In","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount1In","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount0Out","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"amount1Out","type":"uint256"},{"indexed":true,"internalType":"address","name":"to","type":"address"}],"name":"Swap","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint112","name":"reserve0","type":"uint112"},{"indexed":false,"internalType":"uint112","name":"reserve1","type":"uint112"}],"name":"Sync","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"DOMAIN_SEPARATOR","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"MINIMUM_LIQUIDITY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"PERMIT_TYPEHASH","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"to","type":"address"}],"name":"burn","outputs":[{"internalType":"uint256","name":"amount0","type":"uint256"},{"internalType":"uint256","name":"amount1","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"factory","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getReserves","outputs":[{"internalType":"uint112","name":"_reserve0","type":"uint112"},{"internalType":"uint112","name":"_reserve1","type":"uint112"},{"internalType":"uint32","name":"_blockTimestampLast","type":"uint32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"_token0","type":"address"},{"internalType":"address","name":"_token1","type":"address"}],"name":"initialize","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"kLast","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"to","type":"address"}],"name":"mint","outputs":[{"internalType":"uint256","name":"liquidity","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"nonces","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"permit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"price0CumulativeLast","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"price1CumulativeLast","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"to","type":"address"}],"name":"skim","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount0Out","type":"uint256"},{"internalType":"uint256","name":"amount1Out","type":"uint256"},{"internalType":"address","name":"to","type":"address"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"swap","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"sync","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"token0","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"token1","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]'
 RPC_URL = 'https://eth.merkle.io'
 
-# Example usage
-# blocks = cryo.collect('blocks', blocks=['latest'], rpc="https://eth.merkle.io")
-# print(blocks.head())
-# txs = cryo.collect('transactions', blocks=['latest'], rpc="https://eth.merkle.io")
-# print(txs.head())
-
-# txs = cryo.collect(
-#     'transactions',
-#     blocks=['-10:20000000'],
-#     rpc="https://eth.merkle.io"
-# )
 
 def bytes_to_hexstr(b: any) -> str:
     if isinstance(b, list):
@@ -31,12 +20,12 @@ def bytes_to_hexstr(b: any) -> str:
 def decode_univ2_outputdata(b: bytes) -> list[float]:
     aggregated_data = decode(['(bool,bytes)[]'], b)[0]
     reserve_data = decode(['uint112', 'uint112', 'uint32'], aggregated_data[0][1])
-    return reserve_data
+    return [str(reserve_data[0]), str(reserve_data[1]), str(reserve_data[2])]
 
 def decode_univ3_outputdata(b: bytes) -> list[float]:
     aggregated_data = decode(['(bool,bytes)[]'], b)[0]
     slot0_data = decode(['uint160', 'int24', 'uint16', 'uint16', 'uint16', 'uint8', 'bool'], aggregated_data[0][1])
-    return slot0_data
+    return [str(slot0_data[0]), str(slot0_data[1]), str(slot0_data[2]), str(slot0_data[3]), str(slot0_data[4]), str(slot0_data[5]), str(slot0_data[6])]
 
 def get_data(function_selector: str, contract_address: str, decode_fn: callable, block_range: list[str]):
     w3 = web3.Web3()
@@ -51,7 +40,7 @@ def get_data(function_selector: str, contract_address: str, decode_fn: callable,
 
     calldata = m3.encode_abi("tryAggregate", args=[False, aggregate_calldata])
 
-    eth_calls_df = cryo.collect(
+    calls = cryo.collect(
         'eth_calls',
         to_address=[MULTICALL3_ADDRESS],
         call_data=[calldata],
@@ -59,22 +48,28 @@ def get_data(function_selector: str, contract_address: str, decode_fn: callable,
         blocks=block_range
     )
 
-    outdata = eth_calls_df['output_data'][0]
-    data = decode_fn(outdata)
-    return data
+    df = calls.with_columns(pl.col('output_data').map_elements(decode_fn, return_dtype=pl.List(pl.String)).alias('decoded_data'))
+    return df
 
 def get_ethusdc_v2():
     get_reserves_4b = '0902f1ac'
-    data = get_data(get_reserves_4b, UNIV2_ETHUSDC, decode_univ2_outputdata, ['latest'])
-    usdc_bal, eth_bal, timestamp = data
-    print(f'Uniswap V2 ETH Price: {usdc_bal / eth_bal * 1e12}')
+    df = get_data(get_reserves_4b, UNIV2_ETHUSDC, decode_univ2_outputdata, ['-10:20000000'])
+    prices = [get_univ2_price(i[0], i[1]) for i in df['decoded_data']]
+    print(prices)
 
 def get_ethusdc_v3():
     get_slot0_4b = '3850c7bd'
-    data = get_data(get_slot0_4b, UNIV3_ETHUSDC, decode_univ3_outputdata, ['latest'])
-    sqrt_price_x96, _, _, _, _, _, _ = data
-    price = (sqrt_price_x96 ** 2) / (2 ** 192)
-    print(f'Uniswap V3 ETH Price: {1 / (price / 1e12)}')
+    df = get_data(get_slot0_4b, UNIV3_ETHUSDC, decode_univ3_outputdata, ['-10:20000000'])
+    prices = [get_univ3_price(i) for i in df['decoded_data']]
+    print(prices)
+
+def get_univ2_price(bal0, bal1):
+    return int(bal0) / int(bal1) * 1e12
+
+def get_univ3_price(slot0):
+    sqrt_price_x96, _, _, _, _, _, _ = slot0
+    price = (int(sqrt_price_x96) ** 2) / (2 ** 192)
+    return 1 / (price / 1e12)
 
 def get_block_numbers():
     w3 = web3.Web3()
