@@ -17,15 +17,35 @@ def bytes_to_hexstr(b: any) -> str:
         return [bytes_to_hexstr(i) for i in b]
     return '0x' + b.hex()
 
-def decode_univ2_outputdata(b: bytes) -> list[float]:
-    aggregated_data = decode(['(bool,bytes)[]'], b)[0]
-    reserve_data = decode(['uint112', 'uint112', 'uint32'], aggregated_data[0][1])
-    return [str(reserve_data[0]), str(reserve_data[1]), str(reserve_data[2])]
+def get_block_numbers():
+    w3 = web3.Web3()
+    m3 = w3.eth.contract(address=MULTICALL3_ADDRESS, abi=MULTICALL3_ABI)
+    get_block_number_4b = '42cbb15c'
 
-def decode_univ3_outputdata(b: bytes) -> list[float]:
-    aggregated_data = decode(['(bool,bytes)[]'], b)[0]
-    slot0_data = decode(['uint160', 'int24', 'uint16', 'uint16', 'uint16', 'uint8', 'bool'], aggregated_data[0][1])
-    return [str(slot0_data[0]), str(slot0_data[1]), str(slot0_data[2]), str(slot0_data[3]), str(slot0_data[4]), str(slot0_data[5]), str(slot0_data[6])]
+    aggregate_calldata = [
+        [
+            MULTICALL3_ADDRESS,
+            f'0x{get_block_number_4b}',
+        ]
+    ]
+
+    calldata = m3.encode_abi("tryAggregate", args=[True, aggregate_calldata])
+
+
+    cryo_kwargs = {
+        'rpc': 'https://eth.merkle.io',
+        'blocks': ['-10:20000000'],
+    }
+
+    df = cryo.collect(
+        'eth_calls',
+        to_address=[MULTICALL3_ADDRESS],
+        call_data=[calldata],
+        **cryo_kwargs
+    )
+
+    return df
+
 
 def get_data(function_selector: str, contract_address: str, decode_fn: callable, block_range: list[str]):
     w3 = web3.Web3()
@@ -71,34 +91,16 @@ def get_univ3_price(slot0):
     price = (int(sqrt_price_x96) ** 2) / (2 ** 192)
     return 1 / (price / 1e12)
 
-def get_block_numbers():
-    w3 = web3.Web3()
-    m3 = w3.eth.contract(address=MULTICALL3_ADDRESS, abi=MULTICALL3_ABI)
-    get_block_number_4b = '42cbb15c'
+def decode_univ2_outputdata(b: bytes) -> list[float]:
+    aggregated_data = decode(['(bool,bytes)[]'], b)[0]
+    reserve_data = decode(['uint112', 'uint112', 'uint32'], aggregated_data[0][1])
+    return [str(reserve_data[0]), str(reserve_data[1]), str(reserve_data[2])]
 
-    aggregate_calldata = [
-        [
-            MULTICALL3_ADDRESS,
-            f'0x{get_block_number_4b}',
-        ]
-    ]
+def decode_univ3_outputdata(b: bytes) -> list[float]:
+    aggregated_data = decode(['(bool,bytes)[]'], b)[0]
+    slot0_data = decode(['uint160', 'int24', 'uint16', 'uint16', 'uint16', 'uint8', 'bool'], aggregated_data[0][1])
+    return [str(slot0_data[0]), str(slot0_data[1]), str(slot0_data[2]), str(slot0_data[3]), str(slot0_data[4]), str(slot0_data[5]), str(slot0_data[6])]
 
-    calldata = m3.encode_abi("tryAggregate", args=[True, aggregate_calldata])
-
-
-    cryo_kwargs = {
-        'rpc': 'https://eth.merkle.io',
-        'blocks': ['-10:20000000'],
-    }
-
-    df = cryo.collect(
-        'eth_calls',
-        to_address=[MULTICALL3_ADDRESS],
-        call_data=[calldata],
-        **cryo_kwargs
-    )
-
-    return df
 
 def main():
     v2_prices = get_v2_prices(UNIV2_ETHUSDC)
