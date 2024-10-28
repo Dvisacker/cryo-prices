@@ -51,17 +51,17 @@ def get_data(function_selector: str, contract_address: str, decode_fn: callable,
     df = calls.with_columns(pl.col('output_data').map_elements(decode_fn, return_dtype=pl.List(pl.String)).alias('decoded_data'))
     return df
 
-def get_ethusdc_v2():
+def get_v2_prices(pool_address: str):
     get_reserves_4b = '0902f1ac'
-    df = get_data(get_reserves_4b, UNIV2_ETHUSDC, decode_univ2_outputdata, ['-10:20000000'])
+    df = get_data(get_reserves_4b, pool_address, decode_univ2_outputdata, ['-10:20000000'])
     prices = [get_univ2_price(i[0], i[1]) for i in df['decoded_data']]
-    print(prices)
+    return prices
 
-def get_ethusdc_v3():
+def get_v3_prices(pool_address: str):
     get_slot0_4b = '3850c7bd'
-    df = get_data(get_slot0_4b, UNIV3_ETHUSDC, decode_univ3_outputdata, ['-10:20000000'])
+    df = get_data(get_slot0_4b, pool_address, decode_univ3_outputdata, ['-10:20000000'])
     prices = [get_univ3_price(i) for i in df['decoded_data']]
-    print(prices)
+    return prices
 
 def get_univ2_price(bal0, bal1):
     return int(bal0) / int(bal1) * 1e12
@@ -91,18 +91,20 @@ def get_block_numbers():
         'blocks': ['-10:20000000'],
     }
 
-    eth_calls_df = cryo.collect(
+    df = cryo.collect(
         'eth_calls',
         to_address=[MULTICALL3_ADDRESS],
         call_data=[calldata],
         **cryo_kwargs
     )
 
-    print(eth_calls_df.head())
+    return df
 
 def main():
-    get_ethusdc_v2()
-    get_ethusdc_v3()
+    v2_prices = get_v2_prices(UNIV2_ETHUSDC)
+    v3_prices = get_v3_prices(UNIV3_ETHUSDC)
+    print('v2_prices: ', v2_prices)
+    print('v3_prices: ', v3_prices)
 
 
 if __name__ == "__main__":
